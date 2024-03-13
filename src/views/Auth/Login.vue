@@ -15,11 +15,8 @@
 						<!-- <img src="" alt=""> -->
 						<img src="@/assets/img/logo.png" alt="" />
 						<div class="px-3 text-center">
-							<p>
-								Blk A, No. 001, Corner of Hantharwadi Road and Hnin Si Street,
-								Yuzana Highway Complex,, Yangon, Myanmar, 11041
-							</p>
-							<p>Phone : 09 968 119 995</p>
+							<p>18 Kanbawza Street, Golden Vally, Bahan Township, Yangon</p>
+							<p>Phone : 09 252 888 876</p>
 						</div>
 						<div class="mx-auto">
 							<div class="my-3">

@@ -1,4 +1,5 @@
-$primary: #a57c00;
+$primary: #bce0d2;
+// $primary: #a57c00;
 @import "../node_modules/bootstrap/scss/bootstrap";
 
 * {
@@ -10,7 +11,7 @@ $primary: #a57c00;
 }
 
 .btn.btn-primary {
-	color: white !important;
+	color: rgb(0, 0, 0) !important;
 }
 
 table tr {

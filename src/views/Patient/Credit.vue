@@ -406,14 +406,18 @@ const getAccountingList = async () => {
 	let res = await accountingListStore.fetchAccountingLists()
 	console.log(res)
 	bankAccounts.value = res.list.filter(el => {
-		let checker = false
-		appStore.accountingList.bank.map(bankSet => {
-			if (bankSet.code === el.code && bankSet.name === el.subHeader) {
-				checker = true
-			}
-		})
+		// let checker = false
+		// appStore.accountingList.bank.map(bankSet => {
+		// 	if (bankSet.code === el.code && bankSet.name === el.subHeader) {
+		// 		checker = true
+		// 	}
+		// })
 
-		return checker
+		if (el.relatedType && el.relatedType.name === "Assets") {
+			if (el.relatedHeader && el.relatedHeader.name === "Cash at Bank") {
+				return true
+			}
+		}
 	})
 	cashAccounts.value = res.list.filter(el => {
 		if (el._id === appStore.account._id) return el

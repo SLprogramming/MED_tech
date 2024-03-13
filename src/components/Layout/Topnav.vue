@@ -5,7 +5,7 @@
 			<button @click="goback" class="btn btn-outline-primary">
 				<i class="bi bi-chevron-left"></i>
 			</button>
-			<div class="text-capitalize fw-semibold">MED TECH</div>
+			<div class="text-capitalize fw-semibold">Dr Rejuve</div>
 		</div>
 		<div class="dropdown">
 			<button

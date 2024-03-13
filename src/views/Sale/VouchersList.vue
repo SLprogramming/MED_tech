@@ -3505,14 +3505,20 @@ const fetchBankAccounts = async () => {
 	try {
 		let res = await accountingListStore.fetchAccountingLists()
 		bankAccounts.value = res.list.filter(el => {
-			let checker = false
-			appStore.accountingList.bank.map(bankSet => {
-				if (bankSet.code === el.code && bankSet.name === el.subHeader) {
-					checker = true
-				}
-			})
+			// let checker = false
+			// appStore.accountingList.bank.map(bankSet => {
+			// 	if (bankSet.code === el.code && bankSet.name === el.subHeader) {
+			// 		checker = true
+			// 	}
+			// })
 
-			return checker
+			// return checker
+
+			if (el.relatedType && el.relatedType.name === "Assets") {
+				if (el.relatedHeader && el.relatedHeader.name === "Cash at Bank") {
+					return true
+				}
+			}
 		})
 	} catch (err) {
 		console.log(err)
@@ -3540,7 +3546,7 @@ const editPermission = () => {
 
 	if (cashTableList.value.length > 0) {
 		cashTableList.value.map(e => {
-			if (appStore.user.data.user.email == "maykyimyinttheinpos@gmail.com") {
+			if (appStore.user.data.user.email == "ownerdrrejuve@gmail.com") {
 				e.editPermission = true
 			} else {
 				if (getTimestamp(e.permissionDate) > dateNow.value) {
@@ -3553,7 +3559,7 @@ const editPermission = () => {
 	}
 	if (bankTableList.value.length > 0) {
 		bankTableList.value.map(e => {
-			if (appStore.user.data.user.email == "maykyimyinttheinpos@gmail.com") {
+			if (appStore.user.data.user.email == "ownerdrrejuve@gmail.com") {
 				e.editPermission = true
 			} else {
 				if (getTimestamp(e.permissionDate) > dateNow.value) {
@@ -3566,7 +3572,7 @@ const editPermission = () => {
 	}
 	if (allVoucherList.value.length > 0) {
 		allVoucherList.value.map(e => {
-			if (appStore.user.data.user.email == "maykyimyinttheinpos@gmail.com") {
+			if (appStore.user.data.user.email == "ownerdrrejuve@gmail.com") {
 				e.editPermission = true
 			} else {
 				if (getTimestamp(e.permissionDate) > dateNow.value) {

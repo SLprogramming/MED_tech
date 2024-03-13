@@ -406,6 +406,13 @@
 				</div>
 			</template>
 			<template v-if="selectedTab == 'repay'">
+				<div class="row">
+					<div class="col"></div>
+					<div class="col"></div>
+					<div class="col d-flex justify-content-end">
+						<button class="btn btn-primary" @click="openPrint">print</button>
+					</div>
+				</div>
 				<table class="table table-hover table-striped table-borderless">
 					<thead>
 						<tr>
@@ -471,12 +478,20 @@
 				</div>
 			</template>
 		</template>
+		<PrintModalForList :list="repayList" />
 	</div>
 </template>
 <script setup>
 import { ref, onMounted } from "vue"
+import {
+	cusFormatDate,
+	dateForParams,
+	exportData,
+	openDialog,
+} from "../../helpers"
+
 import { usePatientStore } from "@/stores/patient"
-import { cusFormatDate, dateForParams, exportData } from "../../helpers"
+import PrintModalForList from "../../components/General/PrintModalForList.vue"
 import { useAppStore } from "../../stores/app"
 import VueMultiselect from "vue-multiselect"
 import { useAccountingListStore } from "../../stores/accountingList"
@@ -517,6 +532,13 @@ const openModal = list => {
 }
 const updateSelectedPatient = e => {
 	selectedPatient.value = { ...e }
+}
+const openPrint = () => {
+	try {
+		openDialog("printModalForList")
+	} catch (err) {
+		console.error(err)
+	}
 }
 const exportFunction = () => {
 	let paidArr = []
@@ -740,14 +762,20 @@ const getAccountingList = async () => {
 	let res = await accountingListStore.fetchAccountingLists()
 	console.log(res)
 	bankAccounts.value = res.list.filter(el => {
-		let checker = false
-		appStore.accountingList.bank.map(bankSet => {
-			if (bankSet.code === el.code && bankSet.name === el.subHeader) {
-				checker = true
-			}
-		})
+		// let checker = false
+		// appStore.accountingList.bank.map(bankSet => {
+		// 	if (bankSet.code === el.code && bankSet.name === el.subHeader) {
+		// 		checker = true
+		// 	}
+		// })
 
-		return checker
+		if (el.relatedType && el.relatedType.name === "Assets") {
+			if (el.relatedHeader && el.relatedHeader.name === "Cash at Bank") {
+				return true
+			}
+		}
+
+		// return checker
 	})
 	cashAccounts.value = res.list.filter(el => {
 		if (el._id === appStore.account._id) return el

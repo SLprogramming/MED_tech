@@ -446,7 +446,11 @@ const filterPatientByPage = async () => {
 		}
 		let customers = await patientStore.fetchPatients(filterPayload)
 		console.log(customers)
-		if (filter.value.skip > customers._metadata.page_count) {
+
+		if (
+			filter.value.skip > customers._metadata.page_count &&
+			customers.list.length > 0
+		) {
 			filter.value.skip = 1
 			return filterPatientByPage()
 		}

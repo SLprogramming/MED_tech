@@ -60,7 +60,7 @@ export const useAppStore = defineStore("app", {
 			],
 		},
 		account: {
-			_id: "65bc6444c29c96a32e1965e3",
+			_id: "65deff4a800b3d2159349a37",
 		},
 		defaultDoctor: {
 			_id: "640800536989d73f78070adc",
@@ -68,10 +68,8 @@ export const useAppStore = defineStore("app", {
 		sidebar: true,
 		contacts: {
 			one: {
-				address: `အမှတ် - ၁၀၉ ၊ ငွေကြာရံ (၇) လမ်းနှင့် ဝေဇယန္တာလမ်းထောင့်၊ (၃)
-					ရပ်ကွက်၊ တောင်ဥက္ကလာပမြို့နယ်၊ ရန်ကုန်မြို့။ (Waizayandar AYA
-					Bank အနီး)`,
-				phones: ["09 78440 7840"],
+				address: `18 Kanbawza Street, Golden Vally, Bahan Township, Yangon`,
+				phones: ["9 252 888 876"],
 			},
 		},
 		contact: null,

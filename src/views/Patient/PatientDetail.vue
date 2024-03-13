@@ -603,11 +603,17 @@ onMounted(async () => {
 			//   }
 			// }
 
-			appStore.accountingList.bank.map(bankSet => {
-				if (el.code === bankSet.code && el.subHeader === bankSet.name) {
+			// appStore.accountingList.bank.map(bankSet => {
+			// 	if (el.code === bankSet.code && el.subHeader === bankSet.name) {
+			// 		bankAccounts.value.push(el)
+			// 	}
+			// })
+
+			if (el.relatedType && el.relatedType.name === "Assets") {
+				if (el.relatedHeader && el.relatedHeader.name === "Cash at Bank") {
 					bankAccounts.value.push(el)
 				}
-			})
+			}
 		})
 
 		cashAccounts.value = accRes.list.filter(el => {

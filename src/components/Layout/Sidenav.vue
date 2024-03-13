@@ -1,15 +1,15 @@
 <template>
 	<div
-		class="vh-100"
+		class="vh-100 text-black"
 		style="overflow-y: auto; position: fixed; transition: all 0.5s"
 		:class="{ 'nav-on': appStore.sidebar, 'nav-off': !appStore.sidebar }">
-		<h3 class="text-center text-white my-3">MED TECH</h3>
+		<h3 class="text-center my-3">Dr Rejuve</h3>
 		<template
 			v-if="
 				appStore.user.data.user.role == 'master' ||
 				appStore.user.data.user.role == 'Sales'
 			">
-			<ul class="list-unstyled p-1">
+			<ul class="list-unstyled text-black p-1">
 				<li class="mb-1 pb-1">
 					<button
 						class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
@@ -1146,7 +1146,7 @@ const openOpeningDialog = async () => {
 
 <style lang="scss" scoped>
 .btn-toggle {
-	color: white;
+	color: rgb(0, 0, 0) !important;
 	font-weight: 600;
 	background-color: transparent;
 	width: 100%;
@@ -1187,6 +1187,7 @@ const openOpeningDialog = async () => {
 	border: 1px solid #7e5f01 !important;
 	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.15) !important;
 	font-size: 14px;
+	color: black !important;
 }
 
 .btn-toggle-nav a:hover,
